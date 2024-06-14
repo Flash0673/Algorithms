@@ -86,6 +86,9 @@ func solution1(arr []int) []int {
 //O(n)
 func solution2(arr []int) []int {
 	rng := make([]int, len(arr))
+	for i := range rng {
+		rng[i] = int(math.Inf(1)) - 1
+	}
 	nearest_zero := -1
 
 	for i, v := range arr {
@@ -94,16 +97,20 @@ func solution2(arr []int) []int {
 			rng[i] = 0
 			continue
 		}
-		rng[i] = i - nearest_zero
+		if nearest_zero != -1{
+			rng[i] = i - nearest_zero
+		}
 		
 	}
+
+	nearest_zero = -1
 
 	for i := len(arr) - 1; i > -1; i-- {
 		if arr[i] == 0 {
 			nearest_zero = i
 			continue
 		}
-		if nearest_zero - i < rng[i] {
+		if nearest_zero != -1 && nearest_zero - i < rng[i] {
 			rng[i] = nearest_zero - i
 		}
 	}
