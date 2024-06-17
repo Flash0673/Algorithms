@@ -19,7 +19,7 @@ func main() {
 
 func solution(line string) bool {
 	s := []rune(strings.ToLower(line))
-	l, r := 0, len(s) - 1
+	l, r := 0, len(s)-1
 	var hasLetters bool = false // Есть ли буквы
 
 	for l < r {
@@ -42,6 +42,6 @@ func solution(line string) bool {
 	}
 	if hasLetters {
 		return true
-	} 
+	}
 	return false
 }
