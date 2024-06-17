@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var n int 
+	var n int
 	fmt.Scan(&n)
 	digit := make([]int, 0)
 
