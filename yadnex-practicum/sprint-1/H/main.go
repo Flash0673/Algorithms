@@ -37,30 +37,15 @@ func main() {
 	if m {
 		for i := 0; i < len(f); i++ {
 			tmp := f[len(f)-1-i] + s[len(s)-1-i] + rem
-			switch tmp {
-			case 2:
-				res = append(res, 0)
-				rem = 1
-			case 3:
-				res = append(res, 1)
-				rem = 1
-			default:
-				res = append(res, tmp)
-				rem = 0
-			}
+			res = append(res, tmp % 2)
+			rem = tmp / 2
 		}
 
 		if rem > 0 {
 			for i := len(f); i < len(s); i++ {
 				tmp := s[len(s)-1-i] + rem
-				switch tmp {
-				case 2:
-					res = append(res, 0)
-					rem = 1
-				default:
-					res = append(res, tmp)
-					rem = 0
-				}
+				res = append(res, tmp % 2)
+				rem = tmp / 2
 			}
 		}
 
@@ -70,30 +55,15 @@ func main() {
 	} else {
 		for i := 0; i < len(s); i++ {
 			tmp := f[len(f)-1-i] + s[len(s)-1-i] + rem
-			switch tmp {
-			case 2:
-				res = append(res, 0)
-				rem = 1
-			case 3:
-				res = append(res, 1)
-				rem = 1
-			default:
-				res = append(res, tmp)
-				rem = 0
-			}
+			res = append(res, tmp % 2)
+			rem = tmp / 2
 		}
 
 		if rem > 0 {
 			for i := len(s); i < len(f); i++ {
 				tmp := f[len(f)-1-i] + rem
-				switch tmp {
-				case 2:
-					res = append(res, 0)
-					rem = 1
-				default:
-					res = append(res, tmp)
-					rem = 0
-				}
+				res = append(res, tmp % 2)
+				rem = tmp / 2
 			}
 		}
 
