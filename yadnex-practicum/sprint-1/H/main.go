@@ -98,13 +98,13 @@ func solution2(first, second string) []int {
 
 	res := make([]int, 0)
 
-	rem := 0
-	for f != 0 || s != 0 || rem != 0 {
+	overflow := 0
+	for f != 0 || s != 0 || overflow != 0 {
 		lastF := f % 10
 		lastS := s % 10
-		tmp := lastF + lastS + rem
+		tmp := lastF + lastS + overflow
 		res = append(res, tmp % 2)
-		rem = tmp / 2
+		overflow = tmp / 2
 		f /= 10
 		s /= 10
 	}
