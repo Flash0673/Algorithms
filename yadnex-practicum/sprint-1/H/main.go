@@ -23,6 +23,20 @@ func main() {
 		s = append(s, int(n))
 	}
 
+	res := solution1(f, s)
+	for i := len(res) - 1; i > -1; i-- {
+		fmt.Print(res[i])
+	}
+	fmt.Println()
+
+	res = solution2(first, second)
+	for i := len(res) - 1; i > -1; i-- {
+		fmt.Print(res[i])
+	}
+	fmt.Println()
+}
+
+func solution1(f, s []int) []int {
 	rem := 0
 
 	// Определим какое число меньше
@@ -72,8 +86,28 @@ func main() {
 		}
 	}
 
-	for i := len(res) - 1; i > -1; i-- {
-		fmt.Print(res[i])
+	return res
+}
+
+func solution2(first, second string) []int {
+	var f,s int
+	n, _ := strconv.ParseInt(first, 10, 32)
+	f = int(n)
+	n, _ = strconv.ParseInt(second, 10, 32)
+	s = int(n)
+
+	res := make([]int, 0)
+
+	rem := 0
+	for f != 0 || s != 0 || rem != 0 {
+		lastF := f % 10
+		lastS := s % 10
+		tmp := lastF + lastS + rem
+		res = append(res, tmp % 2)
+		rem = tmp / 2
+		f /= 10
+		s /= 10
 	}
-	fmt.Println()
+
+	return res
 }
