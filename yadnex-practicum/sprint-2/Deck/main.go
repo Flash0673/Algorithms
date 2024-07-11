@@ -19,7 +19,7 @@ func main() {
 	fmt.Scan(&n)
 	fmt.Scan(&maxSize)
 
-	q := NewDeck(maxSize)
+	q := NewDEQ(maxSize)
 
 	// fmt.Println(q.queue)
 	// q.printQ()
@@ -65,7 +65,7 @@ func main() {
 
 }
 
-type MyDeckSized struct {
+type MyDEQSized struct {
 	maxSize int
 	size    int
 	head    *int
@@ -73,8 +73,8 @@ type MyDeckSized struct {
 	queue   []*int
 }
 
-func NewDeck(maxSize int) MyDeckSized {
-	queue := MyDeckSized{}
+func NewDEQ(maxSize int) MyDEQSized {
+	queue := MyDEQSized{}
 	head := 0
 	tail := 0
 	queue.maxSize = maxSize
@@ -85,7 +85,7 @@ func NewDeck(maxSize int) MyDeckSized {
 	return queue
 }
 
-func (q *MyDeckSized) pushBack(x int) {
+func (q *MyDEQSized) pushBack(x int) {
 	if q.size == q.maxSize {
 		fmt.Println("error")
 		return
@@ -96,7 +96,7 @@ func (q *MyDeckSized) pushBack(x int) {
 	q.size++
 }
 
-func (q *MyDeckSized) pushFront(x int) {
+func (q *MyDEQSized) pushFront(x int) {
 	if q.size == q.maxSize {
 		fmt.Println("error")
 		return
@@ -111,7 +111,7 @@ func (q *MyDeckSized) pushFront(x int) {
 	q.size++
 }
 
-func (q *MyDeckSized) popBack() *int {
+func (q *MyDEQSized) popBack() *int {
 	if q.isEmpty() {
 		return nil
 	}
@@ -129,7 +129,7 @@ func (q *MyDeckSized) popBack() *int {
 	return x
 }
 
-func (q *MyDeckSized) popFront() *int {
+func (q *MyDEQSized) popFront() *int {
 	if q.isEmpty() {
 		return nil
 	}
@@ -142,11 +142,11 @@ func (q *MyDeckSized) popFront() *int {
 	return x
 }
 
-func (q *MyDeckSized) isEmpty() bool {
+func (q *MyDEQSized) isEmpty() bool {
 	return q.size == 0
 }
 
-func (q *MyDeckSized) printQ() {
+func (q *MyDEQSized) printQ() {
 	fmt.Print("Q: ")
 	for _, v := range q.queue {
 		if v != nil {
